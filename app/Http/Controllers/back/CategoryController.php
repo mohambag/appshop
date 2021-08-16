@@ -28,11 +28,10 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+
         $validateData=$request->validate([
             'name'=>'required|max:250',
             'city'=>'required|max:250',
-            'thumbnail'=>'required|max:250',
-            'img'=>'required|max:250',
         ]);
 
         $category=new Category();
@@ -56,7 +55,6 @@ class CategoryController extends Controller
         $category->parent_id=$request->parent_id;
         $category->user_id=auth()->user()->id;
 
-
         try{
             $category->save();
         }catch (Exception $exception){
@@ -74,11 +72,10 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
+
         $validateDate=$request->validate([
             'name'=>'required|max:250',
-            'city'=>'required|max:250',
-            'thumbnail'=>'required|max:250',
-            'img'=>'required|max:250',
+            'city'=>'required',
         ]);
 
         //******************************image**************************
